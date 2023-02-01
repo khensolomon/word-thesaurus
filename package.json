@@ -1,0 +1,96 @@
+{
+  "name": "thesaurus",
+  "version": "1.0.0",
+  "description": "Word thesaurus",
+  "main": "index.js",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "-type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "node": "./index.mjs",
+        "default": "./index.js"
+      },
+      "require": "./index.js",
+      "types": "./index.d.ts"
+    }
+  },
+  "files": [
+    "lib",
+    "test",
+    "index.js",
+    "index.mjs",
+    "index.d.ts",
+    "min.js",
+    "min.js.map"
+  ],
+  "scripts": {
+    "prepublishOnly": "npm run task:prepublish",
+    "build": "npm run build:node && npm run build:docs",
+    "build:node": "npm run build:cjs",
+    "build:web": "node webpack.build.js",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
+    "build:esm": "tsc -p tsconfig-esm.json",
+    "docs": "npm run build:web && node webpack.docs-serve.js",
+    "build:docs": "npm run build:web && node webpack.docs-build.js",
+    "task:prepublish": "node ./task.prepublish.mjs",
+    "tst": "node ./test/local.js",
+    "test": "mocha ./test/index.js"
+  },
+  "docs": {
+    "type": {
+      "runtype": "module",
+      "help": [
+        "[type] need to disabled when publishing, nor never need if nothing to import from module",
+        "but required in development",
+        "NOTE: publish to npm before git commit"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=16.0 <19"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khensolomon/myanmar-notation.git"
+  },
+  "keywords": [
+    "Myanmar",
+    "Number",
+    "Notation",
+    "Burmese",
+    "numeral",
+    "burma"
+  ],
+  "bugs": {
+    "url": "https://github.com/khensolomon/myanmar-notation/issues"
+  },
+  "author": "Khen Solomon Lethil",
+  "license": "MIT",
+  "homepage": "https://khensolomon.github.io/myanmar-notation/",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^4.9.4",
+    "css-loader": "^6.7.2",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.7.2",
+    "sass": "^1.57.1",
+    "sass-loader": "^13.2.0",
+    "url-loader": "^4.1.1",
+    "pinia": "^2.0.28",
+    "vue": "^3.2.45",
+    "vue-loader": "^17.0.1",
+    "vue-resource": "^1.5.3",
+    "vue-router": "^4.1.6",
+    "vue-template-compiler": "^2.7.14",
+    "vue-template-loader": "^1.1.0",
+    "webpack": "^5.75.0",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "..\\thesaurus-cjs"
+    },
+    {
+      "path": "..\\thesaurus-esm"
+    },
+    {
+      "path": "..\\ttfinfo"
+    }
+  ],
+  "settings": {
+    "workbench.colorCustomizations": {
+      "activityBar.background": "#dfdddd",
+      "activityBar.foreground": "#585858",
+      "textLink.foreground": "#ff0000",
+      "activityBar.inactiveForeground": "#aaaaac",
+      "statusBar.background": "#b6b7b8"
+    },
+    "workbench.colorTheme": "Default Light+"
+  }
+}
