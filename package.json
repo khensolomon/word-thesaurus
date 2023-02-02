@@ -1,5 +1,5 @@
 {
-  "name": "thesaurus",
+  "name": "word-thesaurus",
   "version": "1.0.0",
   "description": "Word thesaurus",
   "main": "index.js",
