@@ -1,4 +1,4 @@
-export * from "./index.js";
+export * from "./dist/index.js";
 
-import * as e from "./index.js";
+import * as e from "./dist/index.js";
 export default e;
