@@ -6,9 +6,9 @@
     // source directory
     "rootDir": "./lib",
     // output directory
-    "outDir": "./dist",
+    "outDir": "./",
     // type output directory
-    "declarationDir": "./types",
+    "declarationDir": "./",
     "sourceMap": false,
     "strict": true,
     "checkJs": true,

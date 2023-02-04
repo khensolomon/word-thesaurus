@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 // import fs from "fs";
-import { wordThesaurus } from "../index.mjs";
+// import { wordThesaurus } from "../index.mjs";
+import thesaurus from "../index.mjs";
 
 // const outFile = "./test/local.json";
 
@@ -46,4 +47,11 @@ import { wordThesaurus } from "../index.mjs";
 
 // wordThesaurus.generate_words({ save: true});
 // wordThesaurus.generate_words({ all: false });
-wordThesaurus.generate_words({ save: true, all: true });
+// wordThesaurus.generate_words({ save: true, all: true });
+
+// thesaurus.find();
+// wordThesaurus.find();
+
+// thesaurus.allPartOfSpeech({ save: true, suffix: "abc" });
+thesaurus.allPartOfSpeech(true, "-just-pos.csv");
+thesaurus.allWord({ save: true, all: true });

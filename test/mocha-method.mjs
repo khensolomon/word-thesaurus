@@ -1,5 +1,6 @@
 import { it } from "mocha";
 import assert from "assert";
+
 import { wordThesaurus } from "../index.mjs";
 
 describe("Method", () => {
@@ -15,12 +16,12 @@ describe("Method", () => {
 		assert.strictEqual("function", typeof wordThesaurus.posName);
 	});
 
-	it("generate_pos", () => {
-		assert.strictEqual("function", typeof wordThesaurus.generate_pos);
+	it("allPartOfSpeech", () => {
+		assert.strictEqual("function", typeof wordThesaurus.allPartOfSpeech);
 	});
 
-	it("generate_words", () => {
-		assert.strictEqual("function", typeof wordThesaurus.generate_words);
+	it("allWord", () => {
+		assert.strictEqual("function", typeof wordThesaurus.allWord);
 	});
 
 	it("find", () => {
@@ -30,6 +31,6 @@ describe("Method", () => {
 
 describe("Module", () => {
 	it("file", () => {
-		assert.strictEqual("string", typeof wordThesaurus.file);
+		assert.strictEqual("string", typeof wordThesaurus.src.file);
 	});
 });

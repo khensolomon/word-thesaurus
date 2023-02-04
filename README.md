@@ -1,4 +1,4 @@
-# myanmar-notation
+# word-thesaurus
 
 A [Node.js](#nodejs) module and a [library](#browser) which converts the given number into words in Myanmar. Following written rule and add the creaky tone on number places `10^5`, `10^6` and `10^7`. Check [live Demo][demo] is available...
 
@@ -38,7 +38,7 @@ However using this primarly structure in large amount seem very weird, eg.100000
 
 ### Node.JS
 
-> Oops: `myanmar-notation` export ES module from CommonJS built version.
+> Oops: `word-thesaurus` export ES module from CommonJS built version.
 
 ```js
 export * from "./index.js";
@@ -47,12 +47,12 @@ import * as e from "./index.js";
 export default e;
 ```
 
-`npm i myanmar-notation` can be `require` or `import` from your Node.JS application. However `myanmar-notation` is assuming that one day npm might force us to seperate ES module and CommonJS. Therefore, it is a good practice to start coding Node.JS application using ES module.
+`npm i word-thesaurus` can be `require` or `import` from your Node.JS application. However `word-thesaurus` is assuming that one day npm might force us to seperate ES module and CommonJS. Therefore, it is a good practice to start coding Node.JS application using ES module.
 
 ```js
 // ES6
-import myanmarNotation from 'myanmar-notation';
-import {get} from 'myanmar-notation';
+import myanmarNotation from 'word-thesaurus';
+import {get} from 'word-thesaurus';
 
 myanmarNotation.get(2700);
 // myanmarNotation.multiplication(5);
@@ -61,8 +61,8 @@ myanmarNotation.get(2700);
 get(12345678);
 
 // CommonJS
-const myanmarNotation = require('myanmar-notation');
-const {get} = require('myanmar-notation');
+const myanmarNotation = require('word-thesaurus');
+const {get} = require('word-thesaurus');
 
 myanmarNotation.get(2700);
 get(12345678);
@@ -70,7 +70,7 @@ get(12345678);
 
 ### Browser
 
-Include the file `myanmar-notation@latest/min.js` in your web application. It is available on [UNPKG][unpkg] and [jsDelivr][jsdelivr].
+Include the file `word-thesaurus@latest/min.js` in your web application. It is available on [UNPKG][unpkg] and [jsDelivr][jsdelivr].
 
 - [https://cdn.jsdelivr.net/npm/ttfmeta@latest/min.js][latest-min-unpkg]
 - [https://unpkg.com/ttfmeta@latest/min.js][latest-min-jsdelivr]
@@ -88,7 +88,7 @@ let notation = window.myanmarNotation;
 
 You may assure that the *API*s are not going to change without a good reason for end user. So any exported `methods` and `classes` **name** will stays the same as the *last* updates.
 
-- [myanmar-notation](#myanmar-notation)
+- [word-thesaurus](#word-thesaurus)
   - [Feature](#feature)
   - [Usage](#usage)
     - [Node.JS](#nodejs)
@@ -191,19 +191,19 @@ notation.get(12345678);
 
 ![shield-license]
 
-[demo]: https://khensolomon.github.io/myanmar-notation/
-[workflows-badge]: https://github.com/khensolomon/myanmar-notation/workflows/Node/badge.svg
-[workflows]: https://github.com/khensolomon/myanmar-notation/actions/workflows/node.yml
+[demo]: https://khensolomon.github.io/word-thesaurus/
+[workflows-badge]: https://github.com/khensolomon/word-thesaurus/workflows/Node/badge.svg
+[workflows]: https://github.com/khensolomon/word-thesaurus/actions/workflows/node.yml
 [test-mocha]: https://img.shields.io/badge/test-mocha-green.svg?longCache=true
 [webpack-badge]: https://img.shields.io/badge/webpack-yes-green.svg?longCache=true
 
 [unpkg]: https://unpkg.com/
-[latest-min-unpkg]: https://unpkg.com/myanmar-notation@latest/min.js
+[latest-min-unpkg]: https://unpkg.com/word-thesaurus@latest/min.js
 [jsdelivr]: https://www.jsdelivr.com/
-[latest-min-jsdelivr]: https://cdn.jsdelivr.net/npm/myanmar-notation@latest/min.js
+[latest-min-jsdelivr]: https://cdn.jsdelivr.net/npm/word-thesaurus@latest/min.js
 
-[travis-badge]: https://app.travis-ci.com/khensolomon/myanmar-notation.svg?branch=master
-[travis]: https://app.travis-ci.com/khensolomon/myanmar-notation
-[npm-badge]: https://img.shields.io/npm/dt/myanmar-notation.svg
-[npm]: https://www.npmjs.com/package/myanmar-notation
-[shield-license]: https://img.shields.io/github/license/khensolomon/myanmar-notation?style=social
+[travis-badge]: https://app.travis-ci.com/khensolomon/word-thesaurus.svg?branch=master
+[travis]: https://app.travis-ci.com/khensolomon/word-thesaurus
+[npm-badge]: https://img.shields.io/npm/dt/word-thesaurus.svg
+[npm]: https://www.npmjs.com/package/word-thesaurus
+[shield-license]: https://img.shields.io/github/license/khensolomon/word-thesaurus?style=social
