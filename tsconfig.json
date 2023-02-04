@@ -8,7 +8,7 @@
     // output directory
     "outDir": "./dist",
     // type output directory
-    "declarationDir": "./dist",
+    "declarationDir": "./types",
     "sourceMap": false,
     "strict": true,
     "checkJs": true,
@@ -17,7 +17,7 @@
     "declaration": true,
     "alwaysStrict": true,
     "noImplicitThis": true,
-    "removeComments": true,
+    "removeComments": false,
     "noImplicitReturns": true,
     "noImplicitAny": true,
     "strictBindCallApply": true,
@@ -53,6 +53,7 @@
   "exclude": [
     "node_modules",
     "test",
-    "dist"
+    "dist",
+    "types"
   ]
 }
