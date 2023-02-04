@@ -2,11 +2,11 @@
   "name": "word-thesaurus",
   "version": "1.0.0",
   "description": "Word thesaurus",
-  "main": "index.js",
-  "module": "index.mjs",
-  "types": "index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./index.mjs",
+  "types": "./types/index.d.ts",
   "-type": "module",
-  "exports": {
+  "exports--": {
     ".": {
       "import": {
         "node": "./index.mjs",
@@ -19,15 +19,27 @@
   "files": [
     "lib",
     "test",
-    "index.js",
-    "index.mjs",
-    "index.d.ts",
-    "min.js",
-    "min.js.map"
+    "dist",
+    "types",
+    "index.mjs"
   ],
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": []
+  },
   "scripts": {
     "prepublishOnly": "npm run task:prepublish",
-    "build": "npm run build:node && npm run build:docs",
+    "build": "npm run build:node",
+    "build-working": "npm run build:node && npm run build:docs",
     "build:node": "npm run build:cjs",
     "build:web": "node webpack.build.js",
     "build:cjs": "tsc -p tsconfig-cjs.json",
@@ -35,8 +47,13 @@
     "docs": "npm run build:web && node webpack.docs-serve.js",
     "build:docs": "npm run build:web && node webpack.docs-build.js",
     "task:prepublish": "node ./task.prepublish.mjs",
-    "tst": "node ./test/local.js",
-    "test": "mocha ./test/index.js"
+    "-tst": "node ./test/local.js",
+    "-test": "mocha ./test/index.js",
+    "tst": "mocha",
+    "test": "mocha test/mocha-*.mjs",
+    "test:current": "mocha test/local.mjs",
+    "test:ts": "mocha -r ts-node/register test/*.ts",
+    "test:ts-current": "mocha -r ts-node/register"
   },
   "docs": {
     "type": {
@@ -53,7 +70,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/khensolomon/myanmar-notation.git"
+    "url": "git+https://github.com/khensolomon/word-thesaurus.git"
   },
   "keywords": [
     "Myanmar",
@@ -64,11 +81,10 @@
     "burma"
   ],
   "bugs": {
-    "url": "https://github.com/khensolomon/myanmar-notation/issues"
+    "url": "https://github.com/khensolomon/word-thesaurus/issues"
   },
   "author": "Khen Solomon Lethil",
   "license": "MIT",
-  "homepage": "https://khensolomon.github.io/myanmar-notation/",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.20.7",
@@ -83,7 +99,7 @@
     "sass-loader": "^13.2.0",
     "url-loader": "^4.1.1",
     "pinia": "^2.0.28",
-    "vue": "^3.2.45",
+    "vue": "^3.2.47",
     "vue-loader": "^17.0.1",
     "vue-resource": "^1.5.3",
     "vue-router": "^4.1.6",
