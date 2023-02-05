@@ -34,12 +34,14 @@ import thesaurus from "../index.mjs";
 
 // wordThesaurus.load({ save: true, space: 1 });
 
-// wordThesaurus.load();
-// const obj = wordThesaurus.find("love");
-// // console.log(obj);
-// for (const o of obj) {
+thesaurus.load();
+// thesaurus.load({ save: true });
+
+// const res = thesaurus.find("love");
+// // console.log(res);
+// for (const o of res) {
 // 	// o.pos
-// 	console.log("posName", wordThesaurus.posName(o.pos));
+// 	console.log("posName", thesaurus.posName(o.pos));
 // 	console.log("posIndex", o.pos);
 // 	// console.log("raw", o.raw);
 // 	console.log("o", o);
@@ -49,9 +51,10 @@ import thesaurus from "../index.mjs";
 // wordThesaurus.generate_words({ all: false });
 // wordThesaurus.generate_words({ save: true, all: true });
 
-// thesaurus.find();
-// wordThesaurus.find();
-
 // thesaurus.allPartOfSpeech({ save: true, suffix: "abc" });
-thesaurus.allPartOfSpeech(true, "-just-pos.csv");
-thesaurus.allWord({ save: true, all: true });
+// thesaurus.allPartOfSpeech(true, "-just-pos.csv");
+// thesaurus.allWord({ save: true, all: true });
+
+// const res = thesaurus.search("rapid");
+const res = thesaurus.find("rapid");
+console.log(res);

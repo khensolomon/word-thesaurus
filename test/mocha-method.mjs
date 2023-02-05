@@ -27,6 +27,10 @@ describe("Method", () => {
 	it("find", () => {
 		assert.strictEqual("function", typeof wordThesaurus.find);
 	});
+
+	it("search", () => {
+		assert.strictEqual("function", typeof wordThesaurus.search);
+	});
 });
 
 describe("Module", () => {
