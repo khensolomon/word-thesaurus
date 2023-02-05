@@ -34,7 +34,7 @@ import thesaurus from "../index.mjs";
 
 // wordThesaurus.load({ save: true, space: 1 });
 
-thesaurus.load();
+// thesaurus.load();
 // thesaurus.load({ save: true });
 
 // const res = thesaurus.find("love");
@@ -55,6 +55,8 @@ thesaurus.load();
 // thesaurus.allPartOfSpeech(true, "-just-pos.csv");
 // thesaurus.allWord({ save: true, all: true });
 
-// const res = thesaurus.search("rapid");
-const res = thesaurus.find("rapid");
+// noncontroversial rapid
+const keyword = "rapid";
+const res = thesaurus.find(keyword);
+// const res = thesaurus.search(keyword);
 console.log(res);

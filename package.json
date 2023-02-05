@@ -5,15 +5,14 @@
   "main": "./dist/index.js",
   "module": "./index.mjs",
   "types": "./types/index.d.ts",
-  "-type": "module",
-  "exports--": {
+  "exports": {
     ".": {
       "import": {
         "node": "./index.mjs",
-        "default": "./index.js"
+        "default": "./dist/index.js"
       },
-      "require": "./index.js",
-      "types": "./index.d.ts"
+      "require": "./dist/index.js",
+      "types": "./types/index.d.ts"
     }
   },
   "files": [
@@ -38,30 +37,17 @@
     "plugins": []
   },
   "scripts": {
+    "prepublishOnly": "npm run build",
     "build": "npm run build:node",
     "build:node": "npm run build:cjs",
     "build:web": "node webpack.build.js",
     "build:cjs": "tsc -p tsconfig-cjs.json",
     "build:esm": "tsc -p tsconfig-esm.json",
-    "docs": "npm run build:web && node webpack.docs-serve.js",
-    "build:docs": "npm run build:web && node webpack.docs-build.js",
-    "-tst": "node ./test/local.js",
-    "-test": "mocha ./test/index.js",
     "tst": "mocha",
     "test": "mocha test/mocha-*.mjs",
     "test:current": "mocha test/local.mjs",
     "test:ts": "mocha -r ts-node/register test/*.ts",
     "test:ts-current": "mocha -r ts-node/register"
-  },
-  "docs": {
-    "type": {
-      "runtype": "module",
-      "help": [
-        "[type] need to disabled when publishing, nor never need if nothing to import from module",
-        "but required in development",
-        "NOTE: publish to npm before git commit"
-      ]
-    }
   },
   "engines": {
     "node": ">=16.0 <19"

@@ -1,6 +1,6 @@
 # word-thesaurus
 
-A [Node.js](#nodejs) module and a [library](#browser) which converts the given number into words in Myanmar. Following written rule and add the creaky tone on number places `10^5`, `10^6` and `10^7`. Check [live Demo][demo] is available...
+A [Node.js](#nodejs) module for word thesaurus from [hunspell/mythes](https://github.com/hunspell/mythes) (<http://www.openoffice.org/lingucomponent/thesaurus.html>)
 
 [![workflows-badge]][workflows]
 [![travis-badge]][travis]
@@ -8,31 +8,10 @@ A [Node.js](#nodejs) module and a [library](#browser) which converts the given n
 [![webpack-badge]][latest-min-unpkg]
 ![test-mocha]
 
-Normally "ပေါင်း" in Myanmar translated "plus", however the same word using in a large number of amount dedicate multiply. For example
-သိန်းတစ်သောင်း is `1 0000 00000` and can also/usually pronounced သိန်းပေါင်း တစ်သောင်း which mean "`(100000*10000)`", therefor "သိန်းတစ်သောင်း" and "သိန်းပေါင်း တစ်သောင်း" has dedicated the same amount. This module is using "ပေါင်း" when the dedicated amount is larger than the subsequent scale name "ခု", "ဆယ်", "ရာ", "ထောင်", "သောင်း", "သိန်း", "သန်း" and "ကု​ဋေ​".
-
-It can be a bit confusing between "သိန်းတစ်သိန်း" and "တစ်သိန်း" as of spoken usually does
-
-> "ငွေ သိန်းတစ်သိန်းလောက်  ချေးပေးလို့ရမလား ခင်ဗျာ"
-
-they probabbly just wanted "100000",
-but it is entirely different as "သိန်းတစ်သိန်း" mean "10000 000000" and "တစ်သိန်း" mean "100000".
-
-There are also difference positioning scale name, primarly it is followed by the given number
-
-> 10: "တစ်ဆယ်" 20: "နှစ်ဆယ်" 10000000: "တစ်ကု​ဋေ​"
-
-However using this primarly structure in large amount seem very weird, eg.100000000: "တစ်ထောင်သိန်း", "တစ်ရာသန်း", "တစ်ဆယ်ကု​ဋေ​", therefore in such amount the scale name lead the number to take away this weirdness.
-
-> 100000000: "သိန်းတစ်ထောင်", "သန်းတစ်ရာ", "ကု​ဋေ​တစ်ဆယ်"
-
 ## Feature
 
-- [x] Decimals are rounded (floor)
-- [x] Query `get(2700)`, `get('၂၇၀၀')`, `get('27,000,000.00')` ,`get('5.23e+8')` is flexible
-- [x] [Demo][demo]
-- [x] mocha
-- [x] webpack
+- [x] has TypeScript declarations
+- [x] support both ESM and CommonJS
 
 ## Usage
 
@@ -40,48 +19,45 @@ However using this primarly structure in large amount seem very weird, eg.100000
 
 > Oops: `word-thesaurus` export ES module from CommonJS built version.
 
-```js
-export * from "./index.js";
-
-import * as e from "./index.js";
-export default e;
-```
-
 `npm i word-thesaurus` can be `require` or `import` from your Node.JS application. However `word-thesaurus` is assuming that one day npm might force us to seperate ES module and CommonJS. Therefore, it is a good practice to start coding Node.JS application using ES module.
 
 ```js
 // ES6
-import myanmarNotation from 'word-thesaurus';
-import {get} from 'word-thesaurus';
+import thesaurus from 'word-thesaurus';
 
-myanmarNotation.get(2700);
-// myanmarNotation.multiplication(5);
-// myanmarNotation.keep(123);
-// myanmarNotation.turn('၄၅၆');
-get(12345678);
-
-// CommonJS
-const myanmarNotation = require('word-thesaurus');
-const {get} = require('word-thesaurus');
-
-myanmarNotation.get(2700);
-get(12345678);
+thesaurus.search("rapid");
+// return
+[
+  {
+    pos: 2,
+    raw: [
+      'fast',       'accelerated',   'accelerating',
+      'alacritous', 'blistering',    'hot',
+      'red-hot',    'double-quick',  'express',
+      'fleet',      'swift',         'hastening',
+      'high-speed', 'high-velocity', 'hurrying',
+      'scurrying',  'immediate',     'prompt',
+      'quick',      'straightaway',  'instantaneous',
+      'instant',    'meteoric',      'speedy',
+      'rapid',      'speeding',      'fast-breaking',
+      'fast-paced', 'winged',        'expedited',
+      'hurried',    'sudden'
+    ]
+  },
+  { pos: 0, raw: [ 'waterway' ] }
+]
 ```
 
-### Browser
+```js
+// CommonJS
+const thesaurus = require('word-thesaurus');
 
-Include the file `word-thesaurus@latest/min.js` in your web application. It is available on [UNPKG][unpkg] and [jsDelivr][jsdelivr].
-
-- [https://cdn.jsdelivr.net/npm/ttfmeta@latest/min.js][latest-min-unpkg]
-- [https://unpkg.com/ttfmeta@latest/min.js][latest-min-jsdelivr]
-
-Now let's assume that you have picked the [jsDelivr][latest-min-jsdelivr] one...
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/ttfmeta@latest/min.js"></script>
-<script>
-let notation = window.myanmarNotation;
-</script>
+thesaurus.find("rapid");
+// return
+[
+  { pos: 2, raw: [ 'fast', 'speedy' ] },
+  { pos: 0, raw: [ 'waterway' ] }
+]
 ```
 
 ## API
@@ -92,99 +68,89 @@ You may assure that the *API*s are not going to change without a good reason for
   - [Feature](#feature)
   - [Usage](#usage)
     - [Node.JS](#nodejs)
-    - [Browser](#browser)
   - [API](#api)
-    - [Multiplication](#multiplication)
-    - [Keep](#keep)
-    - [Turn](#turn)
-    - [get](#get)
+    - [File](#file)
+    - [Load](#load)
+    - [Find](#find)
+    - [Search](#search)
+    - [posName](#posname)
   - [License](#license)
 
-### Multiplication
+### File
 
-the `notation.multiplication()` construct the given len to zero ending, it takes 2 arguments `(len, head='1')`, second argument is optional and return the result as string.
+the `thesaurus.src.file` source file get or set.
 
 ```js
-notation.multiplication(5,'10');
-> "100000"
+// get default source file
+thesaurus.src.file
+> "./src/thesaurus.dat"
+
+// set custom source file
+thesaurus.src.file = "./other/thesaurus.dat"
+> "./other/thesaurus.dat"
 ```
 
-### Keep
+### Load
 
-the `notation.keep()` convert the given string(number) to Burmese number and return the result as string.
+the `thesaurus.load(options)` generate object from source file, it takes 1 argument `({save?:boolean; space?:number})`, if `options.save:true`; save as `*-data.json`.
 
 ```js
-notation.keep(1234567);
-> "၁၂၃၄၅၆၇"
+// save generated object as formated .json
+thesaurus.load({save:true, space:2}) - format and save
 
-notation.keep('a567');
-> "a၅၆၇"
+// save generated object as minify .json
+thesaurus.load({save:true})
 ```
 
-### Turn
+### Find
 
-the `notation.turn()` convert the given string(number) to English number and return the result as string.
-
-```js
-notation.turn('၁၂၃၄၅၆၇');
-> "1234567"
-
-notation.turn('123၅၆၇');
-> "123567"
-```
-
-### get
-
-the `notation.get()` return an object if there is a sense in get query, otherwise empty Object return.
+the `thesaurus.find(keyword)` get thesaurus result for `keyword`
 
 ```js
-notation.get(2700);
+thesaurus.find("waterway");
 // return
->  {
-    "number": "၂၇၀၀",
-    "digit": "2700",
-    "notation": [
-      {
-        "sense": "နှစ်ထောင့်ခုနစ်ရာ"
-      }
+[ 
+  { 
+    pos: 0,
+    raw: [ 'body of water', 'water', 'watercourse', 'way' ]
+  }
+]
+```
+
+### Search
+
+the `thesaurus.search(keyword)` get search result for `keyword`
+
+```js
+thesaurus.search("waterway");
+// return
+[
+  {
+    pos: 0,
+    raw: [
+      'watercourse',   'waterway',
+      'ditch',         'flume',
+      'headrace',      'mare clausum',
+      'mare liberum',  'rapid',
+      'tailrace',      'way',
+      'body of water', 'water'
     ]
   }
+]
+```
 
-notation.get(12345678);
+### posName
+
+the `thesaurus.posName()` get part of speech by index
+
+```js
+thesaurus.posName(0);
 // return
->  {
-    "number": "၁၂၃၄၅၆၇၈",
-    "digit": "12345678",
-    "notation": [
-      {
-        "sense": "သိန်းတစ်ရာ့နှစ်ဆယ့်သုံး လေးသောင်းငါးထောင့်ခြောက်ရာ့ခုနစ်ဆယ့်ရှစ်",
-        "rule": 5,
-        "size": 8,
-        "list": [
-          "123",
-          "45678"
-        ]
-      },
-      {
-        "sense": "သန်းတစ်ဆယ့်နှစ် သုံးသိန်းလေးသောင်းငါးထောင့်ခြောက်ရာ့ခုနစ်ဆယ့်ရှစ်",
-        "rule": 6,
-        "size": 8,
-        "list": [
-          "12",
-          "345678"
-        ]
-      },
-      {
-        "sense": "တစ်ကု​ဋေ​ နှစ်သန်းသုံးသိန်းလေးသောင်းငါးထောင့်ခြောက်ရာ့ခုနစ်ဆယ့်ရှစ်",
-        "rule": 7,
-        "size": 8,
-        "list": [
-          "1",
-          "2345678"
-        ]
-      }
-    ]
-  }
+>  Noun
+
+thesaurus.posName(1);
+// return
+>  Verb
 ```
 
 ## License
