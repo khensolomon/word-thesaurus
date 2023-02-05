@@ -3,9 +3,7 @@
 A [Node.js](#nodejs) module for word thesaurus from [hunspell/mythes](https://github.com/hunspell/mythes) (<http://www.openoffice.org/lingucomponent/thesaurus.html>)
 
 [![workflows-badge]][workflows]
-[![travis-badge]][travis]
 [![npm-badge]][npm]
-[![webpack-badge]][latest-min-unpkg]
 ![test-mocha]
 
 ## Feature
@@ -157,19 +155,10 @@ thesaurus.posName(1);
 
 ![shield-license]
 
-[demo]: https://khensolomon.github.io/word-thesaurus/
 [workflows-badge]: https://github.com/khensolomon/word-thesaurus/workflows/Node/badge.svg
 [workflows]: https://github.com/khensolomon/word-thesaurus/actions/workflows/node.yml
 [test-mocha]: https://img.shields.io/badge/test-mocha-green.svg?longCache=true
-[webpack-badge]: https://img.shields.io/badge/webpack-yes-green.svg?longCache=true
 
-[unpkg]: https://unpkg.com/
-[latest-min-unpkg]: https://unpkg.com/word-thesaurus@latest/min.js
-[jsdelivr]: https://www.jsdelivr.com/
-[latest-min-jsdelivr]: https://cdn.jsdelivr.net/npm/word-thesaurus@latest/min.js
-
-[travis-badge]: https://app.travis-ci.com/khensolomon/word-thesaurus.svg?branch=master
-[travis]: https://app.travis-ci.com/khensolomon/word-thesaurus
 [npm-badge]: https://img.shields.io/npm/dt/word-thesaurus.svg
 [npm]: https://www.npmjs.com/package/word-thesaurus
 [shield-license]: https://img.shields.io/github/license/khensolomon/word-thesaurus?style=social
