@@ -1,7 +1,7 @@
 {
   "name": "word-thesaurus",
-  "version": "1.0.1",
-  "description": "Word thesaurus",
+  "version": "1.0.2",
+  "description": "Words thesaurus & synonyms along with part of speech",
   "main": "./dist/index.js",
   "module": "./index.mjs",
   "types": "./types/index.d.ts",
@@ -57,12 +57,12 @@
     "url": "git+https://github.com/khensolomon/word-thesaurus.git"
   },
   "keywords": [
-    "Myanmar",
-    "Number",
-    "Notation",
-    "Burmese",
-    "numeral",
-    "burma"
+    "thesaurus",
+    "english",
+    "word",
+    "part of speech",
+    "en_US",
+    "synonym"
   ],
   "bugs": {
     "url": "https://github.com/khensolomon/word-thesaurus/issues"

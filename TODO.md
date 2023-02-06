@@ -1,7 +1,8 @@
 # Todo
 
 - Milestone
-  - [ ] ?
+  - [ ] <https://www.npmjs.com/package/wordnet-db>
+  - [ ] <https://github.com/moos/wordpos>
 
 ## development
 
