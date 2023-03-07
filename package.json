@@ -57,9 +57,9 @@
     "url": "git+https://github.com/khensolomon/word-thesaurus.git"
   },
   "keywords": [
-    "thesaurus",
     "english",
     "word",
+    "thesaurus",
     "part of speech",
     "en_US",
     "synonym"
