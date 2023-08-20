@@ -1,6 +1,6 @@
 {
   "name": "word-thesaurus",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Words thesaurus & synonyms along with part of speech",
   "main": "./dist/index.js",
   "module": "./index.mjs",
@@ -71,8 +71,8 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "@babel/core": "^7.22.9",
-    "@babel/preset-env": "^7.22.9",
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
     "babel-loader": "^9.1.3",
     "mocha": "^10.2.0",
     "typescript": "^5.1.6"
